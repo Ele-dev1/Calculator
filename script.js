@@ -15,69 +15,130 @@ let subtractionButton = document.querySelector("#subtraction")
 let multiplicationButton = document.querySelector("#multiplication")
 let divisionButton = document.querySelector("#division")
 
-let equalButton = document.querySelector("equal")
+let equalButton = document.querySelector("#equal")
 
-let currentNum;
+let firstNum = 0
+let operator
+let operatorInserted = false
+let secondNumber = 0
 
 oneButton.addEventListener('click', () => {
-    currentNum = '1'
-    display.textContent += currentNum
+    if (operatorInserted === false) {
+        firstNum += '1'
+    } else {
+        secondNumber += '1'
+    }
+    display.textContent += '1'
 })
 twoButton.addEventListener('click', () => {
-    currentNum = '2'
-    display.textContent += currentNum
+    if (operatorInserted === false) {
+        firstNum += '2'
+    } else {
+        secondNumber += '2'
+    }
+    display.textContent += '2'
 })
 threeButton.addEventListener('click', () => {
-    currentNum = '3'
-    display.textContent += currentNum
+    if (operatorInserted === false) {
+        firstNum += '3'
+    } else {
+        secondNumber += '3'
+    }
+    display.textContent += '3'
 })
 fourButton.addEventListener('click', () => {
-    currentNum = '4'
-    display.textContent += currentNum
+    if (operatorInserted === false) {
+        firstNum += '4'
+    } else {
+        secondNumber += '4'
+    }
+    display.textContent += '4'
 })
 fiveButton.addEventListener('click', () => {
-    currentNum = '5'
-    display.textContent += currentNum
+    if (operatorInserted === false) {
+        firstNum += '5'
+    } else {
+        secondNumber += '5'
+    }
+    display.textContent += '5'
 })
 sixButton.addEventListener('click', () => {
-    currentNum = '6'
-    display.textContent += currentNum
+    if (operatorInserted === false) {
+        firstNum += '6'
+    } else {
+        secondNumber += '6'
+    }
+    display.textContent += '6'
 })
 sevenButton.addEventListener('click', () => {
-    currentNum = '7'
-    display.textContent += currentNum
+    if (operatorInserted === false) {
+        firstNum += '7'
+    } else {
+        secondNumber += '7'
+    }
+    display.textContent += '7'
 })
 eightButton.addEventListener('click', () => {
-    currentNum = '8'
-    display.textContent += currentNum
+    if (operatorInserted === false) {
+        firstNum += '8'
+    } else {
+        secondNumber += '8'
+    }
+    display.textContent += '8'
 })
 nineButton.addEventListener('click', () => {
-    currentNum = '9'
-    display.textContent += currentNum
+    if (operatorInserted === false) {
+        firstNum += '9'
+    } else {
+        secondNumber += '9'
+    }
+    display.textContent += '9'
 })
+
 additionButton.addEventListener('click', () => {
-    display.textContent += '+'
+    if (operatorInserted == false) {
+        operator = '+'
+        display.textContent += operator
+    }
+    operatorInserted = true
 })
 subtractionButton.addEventListener('click', () => {
-    display.textContent += '-'
+    if (operatorInserted == false) {
+        operator = '-'
+        display.textContent += operator
+    }
+    operatorInserted = true
 })
 multiplicationButton.addEventListener('click', () => {
-    display.textContent += '*'
+    if (operatorInserted == false) {
+        operator = '*'
+        display.textContent += operator
+    }
+    operatorInserted = true
 })
 divisionButton.addEventListener('click', () => {
-    display.textContent += '/'
+    if (operatorInserted == false) {
+        operator = '/'
+        display.textContent += operator
+    }
+    operatorInserted = true
 })
 equalButton.addEventListener('click', () => {
-    
+    operate(Number(firstNum), operator, Number(secondNumber))
 })
 
-
-let firstNum;
-let operator;
-let secondNumber;
-
-function operate(firstNum, operator, secondNumber) {
-    
+function operate(a, operator, b) {
+    if (operator === "+") {
+        display.textContent = a+b
+        return a + b
+    } else if (operator === "-") {
+        display.textContent = a-b
+        return a - b
+    } else if (operator === "*") {
+        display.textContent = a*b
+        return a * b
+    } else if (operator === "/") {
+        display.textContent = a/b
+        return a / b
+    }
 }
-
-operate()
