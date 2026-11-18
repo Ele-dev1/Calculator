@@ -23,106 +23,64 @@ let operatorInserted = false
 let secondNumber = 0
 
 oneButton.addEventListener('click', () => {
-    if (operatorInserted === false) {
-        firstNum += '1'
-    } else {
-        secondNumber += '1'
-    }
-    display.textContent += '1'
+    writeNumber('1')
 })
 twoButton.addEventListener('click', () => {
-    if (operatorInserted === false) {
-        firstNum += '2'
-    } else {
-        secondNumber += '2'
-    }
-    display.textContent += '2'
+    writeNumber('2')
 })
 threeButton.addEventListener('click', () => {
-    if (operatorInserted === false) {
-        firstNum += '3'
-    } else {
-        secondNumber += '3'
-    }
-    display.textContent += '3'
+    writeNumber('3')
 })
 fourButton.addEventListener('click', () => {
-    if (operatorInserted === false) {
-        firstNum += '4'
-    } else {
-        secondNumber += '4'
-    }
-    display.textContent += '4'
+    writeNumber('4')
 })
 fiveButton.addEventListener('click', () => {
-    if (operatorInserted === false) {
-        firstNum += '5'
-    } else {
-        secondNumber += '5'
-    }
-    display.textContent += '5'
+    writeNumber('5')
 })
 sixButton.addEventListener('click', () => {
-    if (operatorInserted === false) {
-        firstNum += '6'
-    } else {
-        secondNumber += '6'
-    }
-    display.textContent += '6'
+    writeNumber('6')
 })
 sevenButton.addEventListener('click', () => {
-    if (operatorInserted === false) {
-        firstNum += '7'
-    } else {
-        secondNumber += '7'
-    }
-    display.textContent += '7'
+    writeNumber('7')
 })
 eightButton.addEventListener('click', () => {
-    if (operatorInserted === false) {
-        firstNum += '8'
-    } else {
-        secondNumber += '8'
-    }
-    display.textContent += '8'
+    writeNumber('8')
 })
 nineButton.addEventListener('click', () => {
-    if (operatorInserted === false) {
-        firstNum += '9'
-    } else {
-        secondNumber += '9'
-    }
-    display.textContent += '9'
+    writeNumber('9')
 })
 
-additionButton.addEventListener('click', () => {
-    if (operatorInserted == false) {
-        operator = '+'
-        display.textContent += operator
+function writeNumber (num) {
+    if (operatorInserted === false) {
+        firstNum += num
+        operator = false
+    } else {
+        secondNumber += num
     }
-    operatorInserted = true
+    display.textContent += num
+}
+
+additionButton.addEventListener('click', () => {
+    writeOperator('+')
 })
 subtractionButton.addEventListener('click', () => {
-    if (operatorInserted == false) {
-        operator = '-'
-        display.textContent += operator
-    }
-    operatorInserted = true
+    writeOperator('-')
 })
 multiplicationButton.addEventListener('click', () => {
-    if (operatorInserted == false) {
-        operator = '*'
-        display.textContent += operator
-    }
-    operatorInserted = true
+    writeOperator('*')
 })
 divisionButton.addEventListener('click', () => {
+    writeOperator('/')
+})
+
+function writeOperator (op) {
     if (operatorInserted == false) {
-        operator = '/'
+        operator = op
         display.textContent += operator
     }
     operatorInserted = true
-})
+}
+
 equalButton.addEventListener('click', () => {
     operate(Number(firstNum), operator, Number(secondNumber))
 })
