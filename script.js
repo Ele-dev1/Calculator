@@ -1,5 +1,6 @@
 let display = document.querySelector("#display")
 
+let zeroButton = document.querySelector("#zero")
 let oneButton = document.querySelector("#one")
 let twoButton = document.querySelector("#two")
 let threeButton = document.querySelector("#three")
@@ -17,11 +18,17 @@ let divisionButton = document.querySelector("#division")
 
 let equalButton = document.querySelector("#equal")
 
-let firstNum = 0
+let clearButton = document.querySelector("#clear")
+
+
+let firstNum = ''
 let operator
 let operatorInserted = false
-let secondNumber = 0
+let secondNumber = ''
 
+zeroButton.addEventListener('click', () => {
+    writeNumber('0')
+})
 oneButton.addEventListener('click', () => {
     writeNumber('1')
 })
@@ -53,7 +60,6 @@ nineButton.addEventListener('click', () => {
 function writeNumber (num) {
     if (operatorInserted === false) {
         firstNum += num
-        operator = false
     } else {
         secondNumber += num
     }
@@ -74,15 +80,29 @@ divisionButton.addEventListener('click', () => {
 })
 
 function writeOperator (op) {
-    if (operatorInserted == false) {
+    if (operatorInserted === false) {
         operator = op
         display.textContent += operator
+    } else if (operatorInserted === true){
+        firstNum = operate(Number(firstNum), operator, Number(secondNumber))
+        secondNumber = ''
+        operator = op
+        display.textContent += operator
+        operatorInserted = false
     }
     operatorInserted = true
 }
 
 equalButton.addEventListener('click', () => {
-    operate(Number(firstNum), operator, Number(secondNumber))
+    firstNum = operate(Number(firstNum), operator, Number(secondNumber))
+    secondNumber = ''
+})
+
+clearButton.addEventListener('click', () => {
+    firstNum = ''
+    secondNumber = ''
+    display.textContent = ''
+    operatorInserted = false
 })
 
 function operate(a, operator, b) {
@@ -96,7 +116,7 @@ function operate(a, operator, b) {
         display.textContent = a*b
         return a * b
     } else if (operator === "/") {
-        display.textContent = a/b
-        return a / b
+        display.textContent = (a/b).toFixed(2)
+        return (a / b).toFixed(2)
     }
 }
