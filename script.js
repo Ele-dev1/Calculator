@@ -24,6 +24,7 @@ let clearButton = document.querySelector("#clear")
 let firstNum = ''
 let operator
 let operatorInserted = false
+let shouldReset = false
 let secondNumber = ''
 
 zeroButton.addEventListener('click', () => {
@@ -59,6 +60,14 @@ nineButton.addEventListener('click', () => {
 
 function writeNumber (num) {
     if (operatorInserted === false) {
+        if (shouldReset === true) {
+        display.textContent = ''
+        firstNum = ''
+        secondNumber = ''
+        operator = ''
+        operatorInserted = false
+        shouldReset = false
+        }
         firstNum += num
     } else {
         secondNumber += num
@@ -80,15 +89,30 @@ divisionButton.addEventListener('click', () => {
 })
 
 function writeOperator (op) {
+    if (display.textContent === "You cannot divide by 0") {
+        firstNum = ''
+        secondNumber = ''
+        operator = ''
+    }
     if (operatorInserted === false) {
+        if (firstNum === '') {
+            firstNum = '0'
+            display.textContent = '0'
+        }
         operator = op
         display.textContent += operator
-    } else if (operatorInserted === true){
+    } else if (operatorInserted === true && secondNumber !== ''){
         firstNum = operate(Number(firstNum), operator, Number(secondNumber))
+        if (display.textContent === "You cannot divide by 0") {
+            display.textContent = '0'
+        }
         secondNumber = ''
         operator = op
         display.textContent += operator
         operatorInserted = false
+    } else {
+        operator = op
+        display.textContent = display.textContent.slice(0, -1) + operator
     }
     operatorInserted = true
 }
@@ -96,6 +120,8 @@ function writeOperator (op) {
 equalButton.addEventListener('click', () => {
     firstNum = operate(Number(firstNum), operator, Number(secondNumber))
     secondNumber = ''
+    operatorInserted = false
+    shouldReset = true
 })
 
 clearButton.addEventListener('click', () => {
@@ -116,7 +142,12 @@ function operate(a, operator, b) {
         display.textContent = a*b
         return a * b
     } else if (operator === "/") {
-        display.textContent = (a/b).toFixed(2)
-        return (a / b).toFixed(2)
+        if (b == 0) {
+            display.textContent = "You cannot divide by 0"
+            return ''
+        } else {
+            display.textContent = +parseFloat(a/b).toFixed(2)
+            return +parseFloat(a/b).toFixed(2)
+        }
     }
 }
