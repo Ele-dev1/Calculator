@@ -21,6 +21,7 @@ let equalButton = document.querySelector("#equal")
 let pointButton = document.querySelector("#point")
 
 let clearButton = document.querySelector("#clear")
+let backspaceButton = document.querySelector("#backspace")
 
 
 let firstNum = ''
@@ -168,6 +169,25 @@ clearButton.addEventListener('click', () => {
     display.textContent = ''
     operatorInserted = false
 })
+
+backspaceButton.addEventListener('click', () => {
+    deleteLastEntry()
+})
+
+function deleteLastEntry(){
+    if (display.textContent === "You cannot divide by 0") {
+        display.textContent = ''
+    }
+    if (secondNumber === '' && operatorInserted == false) {
+        firstNum = String(firstNum).slice(0, -1)
+    } else if (secondNumber === '' && operatorInserted == true) {
+        operator = ''
+        operatorInserted = false
+    } else {
+        secondNumber = String(secondNumber).slice(0, -1)
+    }
+    display.textContent = String(display.textContent).slice(0, -1)
+}
 
 function operate(a, operator, b) {
     if (operator === "+") {
