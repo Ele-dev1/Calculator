@@ -128,7 +128,7 @@ function writeOperator (op) {
     if (display.textContent[display.textContent.length -1] === '.') {
         display.textContent = display.textContent.slice(0, -1)
     }
-    if (display.textContent === "You cannot divide by 0") {
+    if (display.textContent === "Error") {
         firstNum = ''
         secondNumber = ''
         operator = ''
@@ -142,7 +142,7 @@ function writeOperator (op) {
         display.textContent += operator
     } else if (operatorInserted === true && secondNumber !== ''){
         firstNum = operate(Number(firstNum), operator, Number(secondNumber))
-        if (display.textContent === "You cannot divide by 0") {
+        if (display.textContent === "Error") {
             display.textContent = '0'
         }
         secondNumber = ''
@@ -175,7 +175,8 @@ backspaceButton.addEventListener('click', () => {
 })
 
 function deleteLastEntry(){
-    if (display.textContent === "You cannot divide by 0") {
+    shouldReset = false
+    if (display.textContent === "Error") {
         display.textContent = ''
     }
     if (secondNumber === '' && operatorInserted == false) {
@@ -201,7 +202,7 @@ function operate(a, operator, b) {
         return +parseFloat(a*b).toFixed(2)
     } else if (operator === "/") {
         if (b == 0) {
-            display.textContent = "You cannot divide by 0"
+            display.textContent = "Error"
             return ''
         } else {
             display.textContent = +parseFloat(a/b).toFixed(2)
@@ -209,3 +210,20 @@ function operate(a, operator, b) {
         }
     }
 }
+
+document.addEventListener("keydown", (e) => {
+    if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].includes(e.key)){
+        writeNumber(e.key)
+    } else if (["+", "-", "*", "/"].includes(e.key)) {
+        writeOperator(e.key)
+    } else if (e.key === ".") {
+        insertPoint()
+    } else if (e.key === "Backspace") {
+        deleteLastEntry()
+    } else if (e.key === "Enter") {
+        e.preventDefault()
+        equalButton.click()
+    } else if (e.key === "Delete") {
+        clearButton.click()
+    }
+})
