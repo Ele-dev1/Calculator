@@ -3,28 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Calculator</title>
 </head>
 <body>
-    <p id="display"></p>
-    <button id="zero" class="number">0</button>
-    <button id="one" class="number">1</button>
-    <button id="two" class="number">2</button>
-    <button id="three" class="number">3</button>
-    <button id="four" class="number">4</button>
-    <button id="five" class="number">5</button>
-    <button id="six" class="number">6</button>
-    <button id="seven" class="number">7</button>
-    <button id="eight" class="number">8</button>
-    <button id="nine" class="number">9</button>
-    <button id="addition" class="operator">+</button>
-    <button id="subtraction" class="operator">-</button>
-    <button id="multiplication" class="operator">*</button>
-    <button id="division" class="operator">/</button>
-    <button id="equal" class="operator">=</button>
-    <button id="point">.</button>
-    <button id="clear">C</button>
-    <button id="backspace">CE</button>
+    <div id="calculator">
+        <div id="displayContainer">
+            <p id="display"></p>
+        </div>
+        <div class="line">
+            <button id="clear">C</button>
+            <button id="backspace">CE</button>
+            <button id="division" class="operator">/</button>
+        </div>
+        <div class="line">
+            <button id="seven" class="number">7</button>
+            <button id="eight" class="number">8</button>
+            <button id="nine" class="number">9</button>
+            <button id="multiplication" class="operator">*</button>
+        </div>
+        <div class="line">
+            <button id="four" class="number">4</button>
+            <button id="five" class="number">5</button>
+            <button id="six" class="number">6</button>
+            <button id="subtraction" class="operator">-</button>
+        </div>
+        <div class="line">
+            <button id="one" class="number">1</button>
+            <button id="two" class="number">2</button>
+            <button id="three" class="number">3</button>
+            <button id="addition" class="operator">+</button>
+            
+        </div>
+        <div class="line">
+            <button id="zero" class="number">0</button>
+            <button id="point">.</button>
+            <button id="equal">=</button>
+        </div>
+    </div>
 
     <script src="script.js" defer></script>
 

@@ -1,0 +1,85 @@
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f7f9;
+}
+
+#calculator {
+    background-color: rgb(148, 182, 196);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(30, 61, 99);
+    border-radius: 5px;
+    height: 320px;
+    width: 200px;
+    box-shadow: 0 5px 15px rgba(28, 51, 78, 0.15)
+}
+
+.line {
+    display: flex;
+}
+
+.operator {
+    background-color: rgb(174, 206, 232);
+}
+
+button {
+    border: 2px solid rgb(39, 91, 121);
+    background-color: rgb(204, 225, 243);
+    padding: 10px 13px;
+    margin: 2px;
+    cursor: pointer;
+    flex: 1;
+}
+
+#equal {
+    flex: 2;
+    background-color: rgb(15, 64, 107);
+    border: 2px solid rgb(11, 11, 88);
+    color: white;
+    
+}
+
+#clear {
+    flex: 2;
+}
+
+#clear, #backspace {
+    background-color: rgb(193, 213, 230)
+}
+
+#displayContainer {
+    background-color: white;
+    margin: 10px 0px;
+    padding: 15px;
+    border: 2px solid  rgb(39, 91, 121);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    height: 35px;
+}
+
+#display, button{
+    font-family: 'Share Tech Mono', monospace;
+}
+
+button:hover, #clear:hover, #backspace:hover {
+  background-color: #f9fafb;
+}
+
+#equal:hover {
+  background-color: #f9fafb;
+  color: black;
+}
